@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela com Edição, Exclusão e Adição</title>
+</head>
+<body>
+    <h2>Cadastro de Usuários</h2>
+
+    <!-- Formulário para adicionar nova linha -->
+    <form id="addRowForm" onsubmit="addRow(event)">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" required>
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade" required>
+        <label for="cidade">Cidade:</label>
+        <input type="text" id="cidade" required>
+        <button type="submit">Adicionar Linha</button>
+    </form>
+
+    <div class="table-container">
+        <table id="tabela">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Idade</th>
+                    <th>Cidade</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                    <td contenteditable="false">Carla</td>
+                    <td contenteditable="false">28</td>
+                    <td contenteditable="false">Belo Horizonte</td>
+                    <td>
+                        <button onclick="editRow(this)">Editar</button>
+                        <button onclick="deleteRow(this)">Apagar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function editRow(button) {
+            const row = button.parentNode.parentNode;
+            const cells = row.querySelectorAll('td');
+
+            for (let i = 0; i < cells.length - 1; i++) {
+                cells[i].contentEditable = cells[i].contentEditable === "true" ? "false" : "true";
+            }
+
+            button.textContent = button.textContent === "Editar" ? "Salvar" : "Editar";
+        }
+
+        function deleteRow(button) {
+            const row = button.parentNode.parentNode;
+            row.remove();
+        }
+
+        function addRow(event) {
+            event.preventDefault(); // Evita o envio do formulário
+
+            // Obtém os valores dos campos do formulário
+            const nome = document.getElementById('nome').value;
+            const idade = document.getElementById('idade').value;
+            const cidade = document.getElementById('cidade').value;
+
+            // Adiciona uma nova linha à tabela
+            const tableBody = document.querySelector('#tabela tbody');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td contenteditable="false">${nome}</td>
+                <td contenteditable="false">${idade}</td>
+                <td contenteditable="false">${cidade}</td>
+                <td>
+                    <button onclick="editRow(this)">Editar</button>
+                    <button onclick="deleteRow(this)">Apagar</button>
+                </td>
+            `;
+            tableBody.appendChild(newRow);
+
+            // Limpa os campos do formulário
+            document.getElementById('addRowForm').reset();
+        }
+    </script>
+</body>
+</html>

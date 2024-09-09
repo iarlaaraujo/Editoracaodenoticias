@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Nome de Usuário:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Entrar</button>
+            <p id="error-message" style="color: red; display: none;">Usuário ou senha incorretos.</p>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            // Obtém as credenciais inseridas
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Credenciais fictícias para autenticação
+            var validUsername = 'teste';
+            var validPassword = '123';
+
+            // Verifica se as credenciais estão corretas
+            if (username === validUsername && password === validPassword) {
+                // Redireciona para a página principal ou de sucesso
+                window.location.href = 'autenticado.html'; // Mude para a URL desejada
+            } else {
+                // Exibe uma mensagem de erro
+                document.getElementById('error-message').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
