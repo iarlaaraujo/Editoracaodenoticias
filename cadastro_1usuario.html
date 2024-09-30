@@ -8,26 +8,29 @@
 </head>
 <header>
     <div class="container">
-      <div class="logo">
-        <a href=""><img src="images/logo.png" alt="" width="90"/></a>
-        <h2>FOCO NAS NOTÍCIAS</h2>
-      </div>
-      <div class="menu">
+      <label for="toggle-1">
+        <div class="logo">
+          <a href=""><img src="images/logo.png" alt="" width="90"/></a>
+          <h2>FOCO NAS NOTÍCIAS</h2>
+        </div>  
+      </label>    
+      <input type="checkbox" id="toggle-1">
+      <div class="menu" id="mostra">
         <nav>
           <ul>
             <li class=""><a href="index.html">Página Inicial</a></li>
             <li class=""><a href="detalhes.html">Página de Detalhes</a></li>
-          
             <li><a href="login.html">Login</a></li>
             <li><a href="cadastro_noticias.html">Cadastro de Notícias</a></li>
-            <li><a href="cadastro_usuario.html">Cadastro de Usuários</a></li>
+            <li><a href="cadastro_1usuario.html">Cadastro de Usuários</a></li>
+            <li><a href="index - Copia.html">Segundo estilo</a></li>
           </ul> 
         </nav>
       </div>
     </div>
   </header>
 <body>
-    <h2>Cadastro de Usuários</h2>
+    <h2 class="centerNews">Cadastro de Usuários</h2>
 
     <!-- Formulário para adicionar nova linha -->
     <form id="addRowForm" onsubmit="addRow(event)">
@@ -51,16 +54,6 @@
                 </tr>
             </thead>
             <tbody>
-              
-                <tr>
-                    <td contenteditable="false">Carla</td>
-                    <td contenteditable="false">28</td>
-                    <td contenteditable="false">Belo Horizonte</td>
-                    <td>
-                        <button onclick="editRow(this)">Editar</button>
-                        <button onclick="deleteRow(this)">Apagar</button>
-                    </td>
-                </tr>
             </tbody>
         </table>
     </div>
@@ -108,5 +101,55 @@
             document.getElementById('addRowForm').reset();
         }
     </script>
+
+<footer>
+    <div class="container flexColumn">
+      <div class="footer_menu">
+        <div class="fm_1">
+          <a href="">...</a>
+        </div>
+        <div class="fm_2">
+          <a href="">...</a>
+        </div>
+        <div class="fm_3"><a href="">...</a></div>
+      </div>
+      <div class="footer_area">
+        <div class="footer_areaitem">
+          <div class="widget">
+            <div class="widget_title">
+              <div class="widget_title_text"> 
+                <a href="autor.html">Página do Autor</a>
+              </div>    
+
+              <div class="widget_title_bar"></div>
+            </div>
+            <div class="widget_body">....</div>
+          </div>
+        </div>
+        <div class="footer_areaitem">
+          <div class="widget">
+            <div class="widget_title">
+              <div class="widget_title_text">Política de Privacidade</div>
+              <div class="widget_title_bar"></div>
+            </div>
+            <div class="widget_body">...</div>
+          </div>
+        </div>
+        <div class="footer_areaitem">
+          <div class="footer_areaitem">
+            <div class="widget">
+              <div class="widget_title">
+                <div class="widget_title_text">Contatos</div>
+                <div class="widget_title_bar"></div>
+              </div>
+              <div class="widget_body">....</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer_copy">Coyright - Autora Iarla Darly Sousa de Araújo</div>
+    </div>
+  </footer>
+
 </body>
 </html>

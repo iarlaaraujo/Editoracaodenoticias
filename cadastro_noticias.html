@@ -9,10 +9,38 @@
    
 </head>
 <body>
+        
+    <header>
+        <div class="container">
+          <label for="toggle-1">
+            <div class="logo">
+              <a href=""><img src="images/logo.png" alt="" width="90"/></a>
+              <h2>FOCO NAS NOTÍCIAS</h2>
+            </div>  
+          </label>    
+          <input type="checkbox" id="toggle-1">
+          <div class="menu" id="mostra">
+            <nav>
+              <ul>
+                <li class=""><a href="index.html">Página Inicial</a></li>
+                <li class=""><a href="detalhes.html">Página de Detalhes</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="cadastro_noticias.html">Cadastro de Notícias</a></li>
+                <li><a href="cadastro_1usuario.html">Cadastro de Usuários</a></li>
+                <li><a href="index - Copia.html">Segundo estilo</a></li>
+              </ul> 
+            </nav>
+          </div>
+        </div>
+      </header>
+    <div class="centerNews">
+        
     <h2>Tabela de Notícias</h2>
 
     <h3>Adicionar Notícia</h3>
-    <form id="newsForm">
+
+    </div>
+        <form id="newsForm">
         <label for="newsText">Texto da Notícia:</label><br>
         <!-- Área de texto onde o usuário pode adicionar a notícia -->
         <textarea id="newsText" rows="4" cols="50"></textarea><br><br>
@@ -34,7 +62,7 @@
         <button type="button" onclick="addNews()">Adicionar Notícia</button>
     </form>
 
-    <h2>Tabela de Notícias</h2>
+    <h2 class="centerNews">Tabela de Notícias</h2>
     <!-- A tabela começa com um cabeçalho para exibir as colunas -->
     <table border="1" id="newsTable">
         <tr>
@@ -129,5 +157,56 @@
             row.remove(); // Remove a linha da tabela
         }
     </script>
+
+
+<footer>
+    <div class="container flexColumn">
+      <div class="footer_menu">
+        <div class="fm_1">
+          <a href="">...</a>
+        </div>
+        <div class="fm_2">
+          <a href="">...</a>
+        </div>
+        <div class="fm_3"><a href="">...</a></div>
+      </div>
+      <div class="footer_area">
+        <div class="footer_areaitem">
+          <div class="widget">
+            <div class="widget_title">
+              <div class="widget_title_text"> 
+                <a href="autor.html">Página do Autor</a>
+              </div>
+             
+
+              <div class="widget_title_bar"></div>
+            </div>
+            <div class="widget_body">....</div>
+          </div>
+        </div>
+        <div class="footer_areaitem">
+          <div class="widget">
+            <div class="widget_title">
+              <div class="widget_title_text">Política de Privacidade</div>
+              <div class="widget_title_bar"></div>
+            </div>
+            <div class="widget_body">...</div>
+          </div>
+        </div>
+        <div class="footer_areaitem">
+          <div class="footer_areaitem">
+            <div class="widget">
+              <div class="widget_title">
+                <div class="widget_title_text">Contatos</div>
+                <div class="widget_title_bar"></div>
+              </div>
+              <div class="widget_body">....</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer_copy">Coyright - Autora Iarla Darly Sousa de Araújo</div>
+    </div>
+  </footer>
 </body>
 </html>
