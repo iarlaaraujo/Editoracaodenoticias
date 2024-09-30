@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro_Usuário</title>
+    <link rel="stylesheet" href="css/estilo.css" />
+
+   
+</head>
+<body>
+        
+    <header>
+        <div class="container">
+          <label for="toggle-1">
+            <div class="logo">
+              <a href=""><img src="images/logo.png" alt="" width="90"/></a>
+              <h2>FOCO NAS NOTÍCIAS</h2>
+            </div>  
+          </label>    
+          <input type="checkbox" id="toggle-1">
+          <div class="menu" id="mostra">
+            <nav>
+              <ul>
+                <li class=""><a href="index.html">Página Inicial</a></li>
+                <li class=""><a href="detalhes.html">Página de Detalhes</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="cadastro_noticias.html">Cadastro de Notícias</a></li>
+                <li><a href="cadastro_1usuario.html">Cadastro de Usuários</a></li>
+                <li><a href="index - Copia.html">Segundo estilo</a></li>
+              </ul> 
+            </nav>
+          </div>
+        </div>
+      </header>
+    <div class="centerNews">
+        
+    <h2>Tabela de Notícias</h2>
+
+    <h3>Adicionar Notícia</h3>
+
+    </div>
+        <form id="newsForm">
+        <label for="newsText">Texto da Notícia:</label><br>
+        <!-- Área de texto onde o usuário pode adicionar a notícia -->
+        <textarea id="newsText" rows="4" cols="50"></textarea><br><br>
+
+        <label for="newsDate">Data:</label><br>
+        <!-- Campo de data para adicionar a data da notícia -->
+        <input type="date" id="newsDate"><br><br>
+
+        <label for="newsType">Tipo de Notícia:</label><br>
+        <!-- Menu suspenso para escolher o tipo de notícia -->
+        <select id="newsType">
+            <option value="Notícia">Notícias Recentes</option>
+            <option value="Esportes">Notícias de Esportes</option>
+            <option value="Entretenimento">Notícias de Política</option>
+
+        </select><br><br>
+
+        <!-- Botão para adicionar uma nova notícia -->
+        <button type="button" onclick="addNews()">Adicionar Notícia</button>
+    </form>
+
+    <h2 class="centerNews">Tabela de Notícias</h2>
+    <!-- A tabela começa com um cabeçalho para exibir as colunas -->
+    <table border="1" id="newsTable">
+        <tr>
+            <th>Texto da Notícia</th>
+            <th>Data</th>
+            <th>Tipo de Notícia</th>
+            <th>Ações</th>
+        </tr>
+    </table>
+
+    <script>
+        // Função para adicionar uma nova linha na tabela
+        function addNews() {
+            var text = document.getElementById("newsText").value; // Obtém o texto da notícia
+            var date = document.getElementById("newsDate").value; // Obtém a data da notícia
+            var type = document.getElementById("newsType").value; // Obtém o tipo de notícia
+
+            // Verifica se todos os campos estão preenchidos
+            if (text && date && type) {
+                var table = document.getElementById("newsTable"); // Acessa a tabela
+                var row = table.insertRow(); // Insere uma nova linha na tabela
+                
+                // Insere células na nova linha
+                var cell1 = row.insertCell(0); // Célula para o texto da notícia
+                var cell2 = row.insertCell(1); // Célula para a data da notícia
+                var cell3 = row.insertCell(2); // Célula para o tipo de notícia
+                var cell4 = row.insertCell(3); // Célula para os botões de ação
+                
+                // Preenche as células com o conteúdo adequado
+                cell1.innerHTML = `<textarea>${text}</textarea>`;
+                cell2.innerHTML = `<input type="date" value="${date}">`;
+                cell3.innerHTML = `
+                    <select>
+                        <option value="Política" ${type === 'Política' ? 'selected' : ''}>Política</option>
+                        <option value="Esportes" ${type === 'Esportes' ? 'selected' : ''}>Esportes</option>
+                        <option value="Entretenimento" ${type === 'Entretenimento' ? 'selected' : ''}>Entretenimento</option>
+                        <option value="Tecnologia" ${type === 'Tecnologia' ? 'selected' : ''}>Tecnologia</option>
+                    </select>`;
+                
+                // Insere os botões para editar, excluir e salvar
+                cell4.className = "button-cell";
+                cell4.innerHTML = `
+                    <button onclick="editRow(this)">Editar</button>
+                    <button onclick="deleteRow(this)">Excluir</button>
+                    <button onclick="saveRow(this)" style="display:none;">Salvar</button>
+                `;
+
+                // Limpa os campos de entrada após adicionar
+                document.getElementById("newsForm").reset();
+            } else {
+                alert("Preencha todos os campos antes de adicionar.");
+            }
+        }
+
+        // Função para permitir a edição de uma linha
+        function editRow(button) {
+            var row = button.parentElement.parentElement; // Acessa a linha em que o botão foi clicado
+            var textarea = row.cells[0].querySelector("textarea"); // Acessa o campo de texto da notícia
+            var dateInput = row.cells[1].querySelector("input[type='date']"); // Acessa o campo de data
+            var selectType = row.cells[2].querySelector("select"); // Acessa o menu suspenso do tipo de notícia
+
+            // Remove a propriedade "readonly" para permitir edição
+            textarea.removeAttribute("readonly");
+            dateInput.removeAttribute("readonly");
+            selectType.removeAttribute("disabled");
+
+            // Exibe o botão de salvar e esconde o botão de editar
+            row.cells[3].querySelector("button[onclick='saveRow(this)']").style.display = "inline";
+            button.style.display = "none";
+        }
+
+        // Função para salvar as alterações feitas em uma linha
+        function saveRow(button) {
+            var row = button.parentElement.parentElement; // Acessa a linha em que o botão foi clicado
+            var textarea = row.cells[0].querySelector("textarea"); // Acessa o campo de texto da notícia
+            var dateInput = row.cells[1].querySelector("input[type='date']"); // Acessa o campo de data
+            var selectType = row.cells[2].querySelector("select"); // Acessa o menu suspenso do tipo de notícia
+
+            // Bloqueia os campos novamente para impedir edição
+            textarea.setAttribute("readonly", true);
+            dateInput.setAttribute("readonly", true);
+            selectType.setAttribute("disabled", true);
+
+            // Exibe o botão de editar e esconde o botão de salvar
+            row.cells[3].querySelector("button[onclick='editRow(this)']").style.display = "inline";
+            button.style.display = "none";
+        }
+
+        // Função para excluir uma linha da tabela
+        function deleteRow(button) {
+            var row = button.parentElement.parentElement; // Acessa a linha em que o botão foi clicado
+            row.remove(); // Remove a linha da tabela
+        }
+    </script>
+
+
+<footer>
+    <div class="container flexColumn">
+      <div class="footer_menu">
+        <div class="fm_1">
+          <a href="">...</a>
+        </div>
+        <div class="fm_2">
+          <a href="">...</a>
+        </div>
+        <div class="fm_3"><a href="">...</a></div>
+      </div>
+      <div class="footer_area">
+        <div class="footer_areaitem">
+          <div class="widget">
+            <div class="widget_title">
+              <div class="widget_title_text"> 
+                <a href="autor.html">Página do Autor</a>
+              </div>
+             
+
+              <div class="widget_title_bar"></div>
+            </div>
+            <div class="widget_body">....</div>
+          </div>
+        </div>
+        <div class="footer_areaitem">
+          <div class="widget">
+            <div class="widget_title">
+              <div class="widget_title_text">Política de Privacidade</div>
+              <div class="widget_title_bar"></div>
+            </div>
+            <div class="widget_body">...</div>
+          </div>
+        </div>
+        <div class="footer_areaitem">
+          <div class="footer_areaitem">
+            <div class="widget">
+              <div class="widget_title">
+                <div class="widget_title_text">Contatos</div>
+                <div class="widget_title_bar"></div>
+              </div>
+              <div class="widget_body">....</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer_copy">Coyright - Autora Iarla Darly Sousa de Araújo</div>
+    </div>
+  </footer>
+</body>
+</html>
