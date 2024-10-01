@@ -42,28 +42,21 @@
     </div>
         <form id="newsForm">
         <label for="newsText">Texto da Notícia:</label><br>
-        <!-- Área de texto onde o usuário pode adicionar a notícia -->
         <textarea id="newsText" rows="4" cols="50"></textarea><br><br>
-
         <label for="newsDate">Data:</label><br>
-        <!-- Campo de data para adicionar a data da notícia -->
         <input type="date" id="newsDate"><br><br>
-
         <label for="newsType">Tipo de Notícia:</label><br>
-        <!-- Menu suspenso para escolher o tipo de notícia -->
         <select id="newsType">
             <option value="Notícia">Notícias Recentes</option>
             <option value="Esportes">Notícias de Esportes</option>
             <option value="Entretenimento">Notícias de Política</option>
-
         </select><br><br>
-
-        <!-- Botão para adicionar uma nova notícia -->
+        
         <button type="button" onclick="addNews()">Adicionar Notícia</button>
     </form>
 
     <h2 class="centerNews">Tabela de Notícias</h2>
-    <!-- A tabela começa com um cabeçalho para exibir as colunas -->
+   
     <table border="1" id="newsTable">
         <tr>
             <th>Texto da Notícia</th>
@@ -74,24 +67,23 @@
     </table>
 
     <script>
-        // Função para adicionar uma nova linha na tabela
+        
         function addNews() {
-            var text = document.getElementById("newsText").value; // Obtém o texto da notícia
-            var date = document.getElementById("newsDate").value; // Obtém a data da notícia
-            var type = document.getElementById("newsType").value; // Obtém o tipo de notícia
+            var text = document.getElementById("newsText").value; 
+            var date = document.getElementById("newsDate").value; 
+            var type = document.getElementById("newsType").value; 
 
-            // Verifica se todos os campos estão preenchidos
             if (text && date && type) {
-                var table = document.getElementById("newsTable"); // Acessa a tabela
-                var row = table.insertRow(); // Insere uma nova linha na tabela
+                var table = document.getElementById("newsTable"); 
+                var row = table.insertRow(); 
                 
-                // Insere células na nova linha
-                var cell1 = row.insertCell(0); // Célula para o texto da notícia
-                var cell2 = row.insertCell(1); // Célula para a data da notícia
-                var cell3 = row.insertCell(2); // Célula para o tipo de notícia
-                var cell4 = row.insertCell(3); // Célula para os botões de ação
+            
+                var cell1 = row.insertCell(0); 
+                var cell2 = row.insertCell(1); 
+                var cell3 = row.insertCell(2); 
+                var cell4 = row.insertCell(3); 
                 
-                // Preenche as células com o conteúdo adequado
+              
                 cell1.innerHTML = `<textarea>${text}</textarea>`;
                 cell2.innerHTML = `<input type="date" value="${date}">`;
                 cell3.innerHTML = `
@@ -102,7 +94,7 @@
                         <option value="Tecnologia" ${type === 'Tecnologia' ? 'selected' : ''}>Tecnologia</option>
                     </select>`;
                 
-                // Insere os botões para editar, excluir e salvar
+              
                 cell4.className = "button-cell";
                 cell4.innerHTML = `
                     <button onclick="editRow(this)">Editar</button>
@@ -110,51 +102,48 @@
                     <button onclick="saveRow(this)" style="display:none;">Salvar</button>
                 `;
 
-                // Limpa os campos de entrada após adicionar
                 document.getElementById("newsForm").reset();
             } else {
                 alert("Preencha todos os campos antes de adicionar.");
             }
         }
 
-        // Função para permitir a edição de uma linha
+  
         function editRow(button) {
-            var row = button.parentElement.parentElement; // Acessa a linha em que o botão foi clicado
-            var textarea = row.cells[0].querySelector("textarea"); // Acessa o campo de texto da notícia
-            var dateInput = row.cells[1].querySelector("input[type='date']"); // Acessa o campo de data
-            var selectType = row.cells[2].querySelector("select"); // Acessa o menu suspenso do tipo de notícia
-
-            // Remove a propriedade "readonly" para permitir edição
+            var row = button.parentElement.parentElement; 
+            var textarea = row.cells[0].querySelector("textarea"); 
+            var dateInput = row.cells[1].querySelector("input[type='date']"); 
+            var selectType = row.cells[2].querySelector("select");
+           
             textarea.removeAttribute("readonly");
             dateInput.removeAttribute("readonly");
             selectType.removeAttribute("disabled");
 
-            // Exibe o botão de salvar e esconde o botão de editar
+       
             row.cells[3].querySelector("button[onclick='saveRow(this)']").style.display = "inline";
             button.style.display = "none";
         }
 
-        // Função para salvar as alterações feitas em uma linha
+       
         function saveRow(button) {
-            var row = button.parentElement.parentElement; // Acessa a linha em que o botão foi clicado
-            var textarea = row.cells[0].querySelector("textarea"); // Acessa o campo de texto da notícia
-            var dateInput = row.cells[1].querySelector("input[type='date']"); // Acessa o campo de data
-            var selectType = row.cells[2].querySelector("select"); // Acessa o menu suspenso do tipo de notícia
-
-            // Bloqueia os campos novamente para impedir edição
+            var row = button.parentElement.parentElement; 
+            var textarea = row.cells[0].querySelector("textarea"); 
+            var dateInput = row.cells[1].querySelector("input[type='date']"); 
+            var selectType = row.cells[2].querySelector("select");
+           
             textarea.setAttribute("readonly", true);
             dateInput.setAttribute("readonly", true);
             selectType.setAttribute("disabled", true);
 
-            // Exibe o botão de editar e esconde o botão de salvar
+          
             row.cells[3].querySelector("button[onclick='editRow(this)']").style.display = "inline";
             button.style.display = "none";
         }
 
-        // Função para excluir uma linha da tabela
+
         function deleteRow(button) {
-            var row = button.parentElement.parentElement; // Acessa a linha em que o botão foi clicado
-            row.remove(); // Remove a linha da tabela
+            var row = button.parentElement.parentElement; 
+            row.remove(); 
         }
     </script>
 

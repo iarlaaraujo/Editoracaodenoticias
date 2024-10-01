@@ -1,44 +1,4 @@
-:root {
-    --cor-fundo: #eaeaea;
-    --cor-texto: #333333;
-    --cor-menu-bg: #0079c7;
-    --cor-menu-hover: #005f99;
-    --cor-footer-bg: #2b4c99;
-    --cor-footer-text: #ffffff;
-    --fonte-principal: 'Verdana', sans-serif;
-}
-
-body {
-    background-color: var(--cor-fundo);
-    color: var(--cor-texto);
-    font-family: var(--fonte-principal);
-}
-
-header {
-    display: block;
-}
-
-.menu {
-    flex-direction: column;
-}
-
-nav ul {
-    display: block;
-}
-
-nav a {
-    padding: 10px;
-    border-bottom: 1px solid var(--cor-menu-hover);
-}
-
-nav a:hover {
-    background-color: var(--cor-menu-hover);
-}
-
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
 body{
@@ -46,12 +6,13 @@ body{
     padding: 0;
    
 }
-
 header{
+    
     display: flex;
     justify-content: center;
     height: 120px;
 }
+
 .container{
     display: flex;
     width: 990px;
@@ -65,13 +26,6 @@ header{
     display: flex;
     align-items: center;
 }
-
-
-
-
-
-
-
 nav ul, nav li{
     list-style: none;
     margin: 0;
@@ -111,28 +65,26 @@ nav .active a, nav a:hover{
     justify-content: center;
 }
 .banner_headline  h1{
-    color:#66515f;
+    color:#FFFFFF;
     font-size: 70px;
-    text-shadow: 0px 1px 0px #6b415a;
+    text-shadow: 0px 1px 0px #555555;
     margin: 0;
     padding: 0;
     max-width: 300px;
 }
 .banner_headline  h2{
-    color:#dee4eb;
+    color:#FFFFFF;
     font-size: 21px;
-    text-shadow: 0px 1px 0px #030000;
+    text-shadow: 0px 1px 0px #555555;
     margin: 0;
     padding: 0;
     max-width: 300px;
     margin-top: 30px;
 }
-.banner_options {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Duas colunas */
-    gap: 20px;
+.banner_options{
+    height: 210px;
+    display:flex;
 }
-
 .banner1,
 .banner2,
 .banner3{
@@ -180,10 +132,6 @@ nav .active a, nav a:hover{
     margin-top: 30px;
     margin-bottom: 20px;
 }
-.widget_title_text a {
-    text-decoration: none;
-    color: inherit;
-}
 .widget_title_text{
     color: #000000;
     font-size: 21px;
@@ -194,7 +142,6 @@ nav .active a, nav a:hover{
     height: 3px;
     background-color:#36a9e1;
     margin-top: 10px;
-
 }
 .flex{
     display: flex;
@@ -227,7 +174,10 @@ article .news_comments{
 article .news_thumbnail{
     margin-top: 30px;
 }
-
+ article .news_thumbnail img{
+    width: 100%; /* Ajusta automaticamente a largura */
+    height: auto; /* Defina a altura desejada */
+ }
  article .news_title{
     margin-top: 25px;
     margin-bottom: 25px;
@@ -240,10 +190,11 @@ article .news_thumbnail{
     font-size: 14px;
     margin-bottom: 30px;
  }
- footer {
-    background-color: var(--cor-footer-bg);
-    color: var(--cor-footer-text);
-}
+ footer{
+    background-color:#53cece;
+    display:flex;
+    justify-content:center;
+ }
  .footer_menu{
     display: flex;
  }
@@ -256,7 +207,7 @@ article .news_thumbnail{
     background-color: #39aae1;
 }
 .fm_2{
-    background-color: #0079c7;
+    background-color: ;#0079c7
 }
 .fm_3{
     background-color: #2b4c99;
@@ -290,8 +241,6 @@ footer .widget_title_text{
     font-size: 12px;
     margin-top: 30px;
 }
-
-
 
 
 
@@ -398,14 +347,13 @@ table button:last-child:hover {
 
 
 
-
-
 #toggle-1 {
     display:none;
  }
  
  label { 
-  
+   -webkit-appearance: push-button;
+   -moz-appearance: button; 
    display: inline-block;
    cursor: pointer;
    padding: 5px;
@@ -419,17 +367,50 @@ table button:last-child:hover {
     display:block;
  }
 
-  /* Estilos responsivos */
-  @media (min-width: 600px) {
-    .container {
-      display: flex;
-    }
 
-    .box {
-      flex: 1;
-    }
-  }
- 
+
+
+/* Estilo do título Login */
+.form-container h1 {
+    text-align: center; 
+    margin-bottom: 25px; 
+}
+
+/* Estilo do texto abaixo do formulário */
+.form-container p {
+    text-align: center; 
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* Estilo para centralizar o título */
+.centerNews {
+    text-align: center; 
+    margin-bottom: 20px; 
+}
+
+/* Cadastro usuário*/
+#addRowForm {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    margin: 0 auto; 
+    max-width: 400px; 
+}
+
+
+.form-container a {
+    color: #0079c7;
+    text-decoration: none;
+}
+
+.form-container a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    margin-top: 40px; /* Ajuste o valor conforme necessário */
+}
 
 
 /* Estilos responsivos */
